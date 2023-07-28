@@ -1,0 +1,91 @@
+---
+title: "data analysis script"
+author: "mel"
+date: "`r Sys.Date()`"
+output: html_document
+---
+research question: Depending on whether stigma (cmoderator) will influence the relationship between pss and emotional 
+stigma: categorical
+pss/ emotional: continous
+
+linear model
+
+looking at the relationship between valence, condition(nonstigma/stigma), and percieved stress
+
+condition 1: non stigamtized, 2= stigmatized
+
+valence (negative emotion)1-9(postive emotions)
+pss: (not stressed)1-5(very stressed)
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(stringr)
+library(knitr)
+library(ggplot2)
+library(showtext)
+library(devtools)
+
+```
+
+
+```{r load}
+data <- read.csv("data/data processing script /STGREW1b_comb.csv")
+
+```
+
+```{r recode}
+#recode 2 varibles Pss: Q2_2, Q2_3
+data <- data %>% 
+  mutate_at(vars(Q2_2, Q2_3), function(x){6-x})
+```
+
+```{r pss col}
+# make one col of pss/ average rows four items t create one single pss col
+data <- data %>% 
+  rowwise() %>% 
+  mutate(PSS = mean(c_across(starts_with('Q2_')), na.rm = TRUE))
+
+```
+
+```{r condition col}
+# condition col / get condition varibale in right format / need to be in factors (categorical)
+data$Condition <- factor(data$Condition,
+                          levels=c(1,2),
+                          labels=c("control","stigma"))
+data$Condition <- as.factor(data$Condition)
+```
+
+```{r linear model}
+# lm formula
+model <- lm(mat_valence ~  Condition * PSS, data)
+
+#see what output is
+ summary (model)
+
+```
+
+```{r ggplot}
+
+theme_name = "theme_barbie" # Pick which theme you want
+
+theme_url = paste0("https://raw.githubusercontent.com/MatthewBJane/theme_park/main/", theme_name ,".R")
+source_url(theme_url)
+
+plot <- ggplot(data, aes(x= PSS, y=mat_valence, color=Condition)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = T) +
+  labs(x="Perceived Stress", y="Emotional Valence") +
+
+  
+  theme_barbie(barbie_font = TRUE) 
+  
+
+
+plot
+  
+
+  
+
+```
+
