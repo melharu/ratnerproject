@@ -30,7 +30,7 @@ library(devtools)
 
 
 ```{r load}
-data <- read.csv("data/data processing script /STGREW1b_comb.csv")
+data <- read.csv("STGREW1b_comb.csv")
 
 ```
 
@@ -52,7 +52,7 @@ data <- data %>%
 # condition col / get condition varibale in right format / need to be in factors (categorical)
 data$Condition <- factor(data$Condition,
                           levels=c(1,2),
-                          labels=c("control","stigma"))
+                          labels=c("Control","Stigma"))
 data$Condition <- as.factor(data$Condition)
 ```
 
@@ -74,11 +74,11 @@ source_url(theme_url)
 
 plot <- ggplot(data, aes(x= PSS, y=mat_valence, color=Condition)) +
   geom_point() +
-  geom_smooth(method = "lm", se = T) +
+  geom_smooth(method = "lm", se = T, alpha = .2) +
   labs(x="Perceived Stress", y="Emotional Valence") +
-
+  theme_barbie(barbie_font = TRUE) +
+  scale_color_manual(values=c(light_color_barbie,dark_color_barbie)) 
   
-  theme_barbie(barbie_font = TRUE) 
   
 
 
