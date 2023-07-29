@@ -33,12 +33,12 @@ library(showtext)
 library(devtools)
 
 ```
-##Load Data
+## Load Data
 ```{r load}
 data <- read.csv("STGREW1b_comb.csv")
 
 ```
-##Background
+## Background
 research question
 what is the study design 
 what are the predictor variables 
@@ -50,7 +50,7 @@ What are your predictions/ excpeted
 
 
 
-#Reverse Code Perveived Stress 
+## Reverse Code Perveived Stress 
 ```{r recode}
 #recode 2 varibles Pss: Q2_2, Q2_3
 data <- data %>% 
@@ -64,7 +64,7 @@ data <- data %>%
   mutate(PSS = mean(c_across(starts_with('Q2_')), na.rm = TRUE))
 
 ```
-##Format Condition to Catergorical
+## Format Condition to Catergorical
 ```{r condition col}
 # condition col / get condition varibale in right format / need to be in factors (categorical)
 data$Condition <- factor(data$Condition,
@@ -72,19 +72,19 @@ data$Condition <- factor(data$Condition,
                           labels=c("Control","Stigma"))
 data$Condition <- as.factor(data$Condition)
 ```
-##Descriptives of Condition
+## Descriptives of Condition
 ```{r desc condition}
 
 ```
-##Descriptives of Emotional Valence 
+## Descriptives of Emotional Valence 
 ```{r desc emotional valence}
 
 ```
-##Descriptives of Percieved Stress
+## Descriptives of Percieved Stress
 ```{r desc percieved stress}
 
 ```
-##Create a Linear Regression Model
+## Create a Linear Regression Model
 ```{r linear model}
 # lm formula
 model <- lm(mat_valence ~  Condition * PSS, data)
@@ -93,7 +93,7 @@ model <- lm(mat_valence ~  Condition * PSS, data)
  summary (model)
 
 ```
-##Create Linear Regression Model Graph 
+## Create Linear Regression Model Graph 
 ```{r ggplot}
 
 theme_name = "theme_barbie" # Pick which theme you want
@@ -117,7 +117,7 @@ plot
   
 
 ```
-##Conclusion 
+## Conclusion 
 Restate predictions
 What are the results
 were the results supported/ sig?
