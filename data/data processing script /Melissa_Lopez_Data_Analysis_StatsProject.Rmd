@@ -2,7 +2,13 @@
 title: "data analysis script"
 author: "mel"
 date: "`r Sys.Date()`"
-output: html_document
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    fig_width: 10
+    fig_height: 6
+
 ---
 research question: Depending on whether stigma (cmoderator) will influence the relationship between pss and emotional 
 stigma: categorical
@@ -27,19 +33,30 @@ library(showtext)
 library(devtools)
 
 ```
-
-
+##Load Data
 ```{r load}
 data <- read.csv("STGREW1b_comb.csv")
 
 ```
+##Background
+research question
+what is the study design 
+what are the predictor variables 
+what are the outcome variables 
+what roughly happened in the study 
+What are your predictions/ excpeted
 
+
+
+
+
+#Reverse Code Perveived Stress 
 ```{r recode}
 #recode 2 varibles Pss: Q2_2, Q2_3
 data <- data %>% 
   mutate_at(vars(Q2_2, Q2_3), function(x){6-x})
 ```
-
+## Average and Create A Column for Percieved Stress
 ```{r pss col}
 # make one col of pss/ average rows four items t create one single pss col
 data <- data %>% 
@@ -47,7 +64,7 @@ data <- data %>%
   mutate(PSS = mean(c_across(starts_with('Q2_')), na.rm = TRUE))
 
 ```
-
+##Format Condition to Catergorical
 ```{r condition col}
 # condition col / get condition varibale in right format / need to be in factors (categorical)
 data$Condition <- factor(data$Condition,
@@ -55,7 +72,19 @@ data$Condition <- factor(data$Condition,
                           labels=c("Control","Stigma"))
 data$Condition <- as.factor(data$Condition)
 ```
+##Descriptives of Condition
+```{r desc condition}
 
+```
+##Descriptives of Emotional Valence 
+```{r desc emotional valence}
+
+```
+##Descriptives of Percieved Stress
+```{r desc percieved stress}
+
+```
+##Create a Linear Regression Model
 ```{r linear model}
 # lm formula
 model <- lm(mat_valence ~  Condition * PSS, data)
@@ -64,7 +93,7 @@ model <- lm(mat_valence ~  Condition * PSS, data)
  summary (model)
 
 ```
-
+##Create Linear Regression Model Graph 
 ```{r ggplot}
 
 theme_name = "theme_barbie" # Pick which theme you want
@@ -88,4 +117,7 @@ plot
   
 
 ```
-
+##Conclusion 
+Restate predictions
+What are the results
+were the results supported/ sig?
