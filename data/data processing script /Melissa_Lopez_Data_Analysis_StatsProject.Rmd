@@ -10,15 +10,10 @@ output:
     fig_height: 6
 
 ---
-Does stigma function as a moderator in the relationship between perceived stress and emotional valence (positive or negative affect) experienced by individuals?
 
-Perceived Stress (Continuous): (not stressed)1-5(very stressed)
-Emotional Valence(Continuous): (negative emotion)1-9(postive emotions)
-Condition (Categorical): condition 1: non stigamtized, 2= stigmatized
-
-Predicted Results: 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(readr)
 library(tidyverse)
 library(stringr)
 library(knitr)
@@ -27,12 +22,12 @@ library(showtext)
 library(devtools)
 
 ```
-##Background: 
+## Background: 
 
-#Research Question: 
+# Research Question: 
 Does stigma function as a moderator in the relationship between perceived stress and emotional valence (positive or negative affect) experienced by individuals?
 
-#Study Design
+# Study Design
 Perceived Stress: 1(not stressed)-5(very stressed)
   Outcome Variable
   Continuous: 
@@ -45,13 +40,13 @@ Condition: condition 1:non-stigmatized, 2= stigmatized
   Predictor Variable
   Categorical
 
-#Predicted Results:
+# Predicted Results:
 The interaction between perceived stress, stigma, and emotional valence is expected to be significant. Participants facing high stigma are predicted to have high perceived stress and lowest emotional valence (most negative affect) compared to other group. 
 
 
 ## Load Data
 ```{r load}
-data <- read.csv("STGREW1b_comb.csv")
+data <- read.csv("data/data processing script /STGREW1b_comb.csv")
 ```
 
 ## Reverse Code Perveived Stress 
@@ -128,7 +123,7 @@ plot <- ggplot(data, aes(x= PSS, y=mat_valence, color=Condition)) +
   
 
 plot
-```
+
 ## Results
 The interaction between stigma, percieved stress, and emotional valence was significant. This supports the idea that stigma plays a moderating role in the link between perceived stress and emotional valence. 
  

@@ -1487,31 +1487,33 @@ Emotions</h1>
 </div>
 
 
+<div id="background" class="section level2">
+<h2>Background:</h2>
+</div>
+<div id="research-question" class="section level1">
+<h1>Research Question:</h1>
 <p>Does stigma function as a moderator in the relationship between
 perceived stress and emotional valence (positive or negative affect)
 experienced by individuals?</p>
-<p>Perceived Stress (Continuous): (not stressed)1-5(very stressed)
-Emotional Valence(Continuous): (negative emotion)1-9(postive emotions)
-Condition (Categorical): condition 1: non stigamtized, 2=
-stigmatized</p>
-<p>Predicted Results:</p>
-<p>##Background:</p>
-<p>#Research Question: Does stigma function as a moderator in the
-relationship between perceived stress and emotional valence (positive or
-negative affect) experienced by individuals?</p>
-<p>#Study Design Perceived Stress: 1(not stressed)-5(very stressed)
-Outcome Variable Continuous:</p>
+</div>
+<div id="study-design" class="section level1">
+<h1>Study Design</h1>
+<p>Perceived Stress: 1(not stressed)-5(very stressed) Outcome Variable
+Continuous:</p>
 <p>Emotional Valence: 1(negative)-9(positive) Outcome Variable
 Continuous</p>
 <p>Condition: condition 1:non-stigmatized, 2= stigmatized Predictor
 Variable Categorical</p>
-<p>#Predicted Results: The interaction between perceived stress, stigma,
-and emotional valence is expected to be significant. Participants facing
-high stigma are predicted to have high perceived stress and lowest
-emotional valence (most negative affect) compared to other group.</p>
+</div>
+<div id="predicted-results" class="section level1">
+<h1>Predicted Results:</h1>
+<p>The interaction between perceived stress, stigma, and emotional
+valence is expected to be significant. Participants facing high stigma
+are predicted to have high perceived stress and lowest emotional valence
+(most negative affect) compared to other group.</p>
 <div id="load-data" class="section level2">
 <h2>Load Data</h2>
-<pre class="r"><code>data &lt;- read.csv(&quot;STGREW1b_comb.csv&quot;)</code></pre>
+<pre class="r"><code>data &lt;- read.csv(&quot;data/data processing script /STGREW1b_comb.csv&quot;)</code></pre>
 </div>
 <div id="reverse-code-perveived-stress" class="section level2">
 <h2>Reverse Code Perveived Stress</h2>
@@ -1607,10 +1609,15 @@ theme_name ,“.R”) source_url(theme_url)</p>
 labs(x=“Perceived Stress”, y=“Emotional Valence”) +
 theme_barbie(barbie_font = TRUE) +
 scale_color_manual(values=c(light_color_barbie,dark_color_barbie))</p>
-<p>plot ``` ## Results The interaction between stigma, percieved stress,
-and emotional valence was significant. This supports the idea that
-stigma plays a moderating role in the link between perceived stress and
-emotional valence.</p>
+<p>plot</p>
+</div>
+<div id="results" class="section level2">
+<h2>Results</h2>
+<p>The interaction between stigma, percieved stress, and emotional
+valence was significant. This supports the idea that stigma plays a
+moderating role in the link between perceived stress and emotional
+valence.</p>
+</div>
 </div>
 
 
