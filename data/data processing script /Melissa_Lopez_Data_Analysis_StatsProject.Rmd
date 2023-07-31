@@ -1,5 +1,5 @@
 ---
-title: "data analysis script"
+title: "The Effects of Stigmatization on Stress and Emotions"
 author: "mel"
 date: "`r Sys.Date()`"
 output: 
@@ -10,19 +10,13 @@ output:
     fig_height: 6
 
 ---
-research question: Depending on whether stigma (cmoderator) will influence the relationship between pss and emotional 
-stigma: categorical
-pss/ emotional: continous
+Does stigma function as a moderator in the relationship between perceived stress and emotional valence (positive or negative affect) experienced by individuals?
 
-linear model
+Perceived Stress (Continuous): (not stressed)1-5(very stressed)
+Emotional Valence(Continuous): (negative emotion)1-9(postive emotions)
+Condition (Categorical): condition 1: non stigamtized, 2= stigmatized
 
-looking at the relationship between valence, condition(nonstigma/stigma), and percieved stress
-
-condition 1: non stigamtized, 2= stigmatized
-
-valence (negative emotion)1-9(postive emotions)
-pss: (not stressed)1-5(very stressed)
-
+Predicted Results: 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
@@ -33,22 +27,32 @@ library(showtext)
 library(devtools)
 
 ```
+##Background: 
+
+#Research Question: 
+Does stigma function as a moderator in the relationship between perceived stress and emotional valence (positive or negative affect) experienced by individuals?
+
+#Study Design
+Perceived Stress: 1(not stressed)-5(very stressed)
+  Outcome Variable
+  Continuous: 
+  
+Emotional Valence: 1(negative)-9(positive)
+  Outcome Variable
+  Continuous
+  
+Condition: condition 1:non-stigmatized, 2= stigmatized
+  Predictor Variable
+  Categorical
+
+#Predicted Results:
+The interaction between perceived stress, stigma, and emotional valence is expected to be significant. Participants facing high stigma are predicted to have high perceived stress and lowest emotional valence (most negative affect) compared to other group. 
+
+
 ## Load Data
 ```{r load}
 data <- read.csv("STGREW1b_comb.csv")
-
 ```
-## Background
-research question
-what is the study design 
-what are the predictor variables 
-what are the outcome variables 
-what roughly happened in the study 
-What are your predictions/ excpeted
-
-
-
-
 
 ## Reverse Code Perveived Stress 
 ```{r recode}
@@ -73,16 +77,21 @@ data$Condition <- factor(data$Condition,
 data$Condition <- as.factor(data$Condition)
 ```
 ## Descriptives of Condition
-```{r desc condition}
+```{r}
+numeric_condition <- as.numeric(data$Condition)
 
+if (any(is.na(numeric_condition)))
+  stop("There are missing values in data$Condition. Please handle them before computing SD.")
+
+c(summary(numeric_condition), "SD" = sd(numeric_condition))
 ```
 ## Descriptives of Emotional Valence 
 ```{r desc emotional valence}
-
+c(summary(data$mat_valence),"SD"=sd(data$mat_valence,na.rm=T))
 ```
 ## Descriptives of Percieved Stress
 ```{r desc percieved stress}
-
+c(summary(data$PSS),"SD"=sd(data$PSS,na.rm=T))
 ```
 ## Create a Linear Regression Model
 ```{r linear model}
@@ -94,7 +103,16 @@ model <- lm(mat_valence ~  Condition * PSS, data)
 
 ```
 ## Create Linear Regression Model Graph 
-```{r ggplot}
+```{r ggplot 0}
+plot <- ggplot(data, aes(x= PSS, y=mat_valence, color=Condition)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = T, alpha = .2) +
+  labs(x="Perceived Stress", y="Emotional Valence") 
+
+plot
+```
+
+```{r ggplot
 
 theme_name = "theme_barbie" # Pick which theme you want
 
@@ -108,16 +126,9 @@ plot <- ggplot(data, aes(x= PSS, y=mat_valence, color=Condition)) +
   theme_barbie(barbie_font = TRUE) +
   scale_color_manual(values=c(light_color_barbie,dark_color_barbie)) 
   
-  
-
 
 plot
-  
-
-  
-
 ```
-## Conclusion 
-Restate predictions
-What are the results
-were the results supported/ sig?
+## Results
+The interaction between stigma, percieved stress, and emotional valence was significant. This supports the idea that stigma plays a moderating role in the link between perceived stress and emotional valence. 
+ 
