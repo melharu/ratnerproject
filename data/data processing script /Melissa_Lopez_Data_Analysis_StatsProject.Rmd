@@ -40,6 +40,7 @@ Condition: condition 1:non-stigmatized, 2= stigmatized
   Predictor Variable
   Categorical
 
+Between-Subject Design
 # Predicted Results:
 The interaction between perceived stress, stigma, and emotional valence is expected to be significant. Participants facing high stigma are predicted to have high perceived stress and lowest emotional valence (most negative affect) compared to other group. 
 
@@ -72,13 +73,10 @@ data$Condition <- factor(data$Condition,
 data$Condition <- as.factor(data$Condition)
 ```
 ## Descriptives of Condition
+
 ```{r}
-numeric_condition <- as.numeric(data$Condition)
-
-if (any(is.na(numeric_condition)))
-  stop("There are missing values in data$Condition. Please handle them before computing SD.")
-
-c(summary(numeric_condition), "SD" = sd(numeric_condition))
+sum(data$Condition == "Control")
+sum(data$Condition == "Stigma")
 ```
 ## Descriptives of Emotional Valence 
 ```{r desc emotional valence}
@@ -125,5 +123,5 @@ plot <- ggplot(data, aes(x= PSS, y=mat_valence, color=Condition)) +
 plot
 
 ## Results
-The interaction between stigma, percieved stress, and emotional valence was significant. This supports the idea that stigma plays a moderating role in the link between perceived stress and emotional valence. 
+The interaction between stigma and perceived stress on emotional valence was not significant. This finding was not aligned with our hypothesis could be due to an inadequate sample size or there is no relationship with stigma and stress.
  
