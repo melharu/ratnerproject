@@ -20,30 +20,35 @@ library(knitr)
 library(ggplot2)
 library(showtext)
 library(devtools)
-
+library(ThemePark)
 ```
-## Background: 
+# Background: 
 
-# Research Question: 
+## Research Question: 
 Does stigma function as a moderator in the relationship between perceived stress and emotional valence (positive or negative affect) experienced by individuals?
 
-# Study Design
-Perceived Stress: 1(not stressed)-5(very stressed)
-  Outcome Variable
-  Continuous: 
-  
-Emotional Valence: 1(negative)-9(positive)
-  Outcome Variable
-  Continuous
-  
-Condition: condition 1:non-stigmatized, 2= stigmatized
-  Predictor Variable
-  Categorical
+## Study Design
 
 Between-Subject Design
-# Predicted Results:
+
+**Predictors:**
+1. Perceived Stress: 1(not stressed)-5(very stressed)
+  + Outcome Variable
+  + Continuous
+2. Condition: condition 1:non-stigmatized, 2= stigmatized
+  + Predictor Variable
+  + Categorical
+
+**Outcome:**  
+1. Emotional Valence: 1(negative)-9(positive)
+  + Outcome Variable
+  + Continuous
+  
+  
+## Predicted Results:
 The interaction between perceived stress, stigma, and emotional valence is expected to be significant. Participants facing high stigma are predicted to have high perceived stress and lowest emotional valence (most negative affect) compared to other group. 
 
+# Data Preperation
 
 ## Load Data
 ```{r load}
@@ -72,21 +77,33 @@ data$Condition <- factor(data$Condition,
                           labels=c("Control","Stigma"))
 data$Condition <- as.factor(data$Condition)
 ```
-## Descriptives of Condition
+
+# Data Analysis
+
+
+## Descriptives
+
+
+
+### Descriptives of Condition
 
 ```{r}
 sum(data$Condition == "Control")
 sum(data$Condition == "Stigma")
 ```
-## Descriptives of Emotional Valence 
+### Descriptives of Emotional Valence 
 ```{r desc emotional valence}
 c(summary(data$mat_valence),"SD"=sd(data$mat_valence,na.rm=T))
 ```
-## Descriptives of Percieved Stress
+### Descriptives of Percieved Stress
 ```{r desc percieved stress}
 c(summary(data$PSS),"SD"=sd(data$PSS,na.rm=T))
 ```
-## Create a Linear Regression Model
+
+## Linear Regression Model
+The interaction between stigma and perceived stress on emotional valence was not significant. This finding was not aligned with our hypothesis. This result could be due to an inadequate sample size or it could be that there is no relationship between stigma and stress.
+
+### Create a Linear Regression Model
 ```{r linear model}
 # lm formula
 model <- lm(mat_valence ~  Condition * PSS, data)
@@ -95,22 +112,11 @@ model <- lm(mat_valence ~  Condition * PSS, data)
  summary (model)
 
 ```
-## Create Linear Regression Model Graph 
-```{r ggplot 0}
-plot <- ggplot(data, aes(x= PSS, y=mat_valence, color=Condition)) +
-  geom_point() +
-  geom_smooth(method = "lm", se = T, alpha = .2) +
-  labs(x="Perceived Stress", y="Emotional Valence") 
+### Create Linear Regression Model Graph 
 
-plot
-```
 
-```{r ggplot
+```{r ggplot}
 
-theme_name = "theme_barbie" # Pick which theme you want
-
-theme_url = paste0("https://raw.githubusercontent.com/MatthewBJane/theme_park/main/", theme_name ,".R")
-source_url(theme_url)
 
 plot <- ggplot(data, aes(x= PSS, y=mat_valence, color=Condition)) +
   geom_point() +
@@ -121,7 +127,6 @@ plot <- ggplot(data, aes(x= PSS, y=mat_valence, color=Condition)) +
   
 
 plot
+```
 
-## Results
-The interaction between stigma and perceived stress on emotional valence was not significant. This finding was not aligned with our hypothesis could be due to an inadequate sample size or there is no relationship with stigma and stress.
  
