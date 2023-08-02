@@ -11,9 +11,9 @@
 
 <meta name="author" content="mel" />
 
-<meta name="date" content="2023-08-01" />
+<meta name="date" content="2023-08-02" />
 
-<title>The Effects of Stigmatization on Stress and Emotions</title>
+<title>Examining relationships among stigmatization, stress and emotions</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1479,10 +1479,10 @@ border-radius: 0px;
 
 
 
-<h1 class="title toc-ignore">The Effects of Stigmatization on Stress and
-Emotions</h1>
+<h1 class="title toc-ignore">Examining relationships among
+stigmatization, stress and emotions</h1>
 <h4 class="author">mel</h4>
-<h4 class="date">2023-08-01</h4>
+<h4 class="date">2023-08-02</h4>
 
 </div>
 
@@ -1491,34 +1491,39 @@ Emotions</h1>
 <h1>Background</h1>
 <div id="research-question" class="section level2">
 <h2>Research Question</h2>
-<p>Does stigma function as a moderator in the relationship between
-perceived stress and emotional valence (positive or negative affect)
+<p>Does perceived stress function as a moderator in the relationship
+between stigma and emotional valence (positive or negative affect)
 experienced by individuals?</p>
 </div>
 <div id="study-design" class="section level2">
 <h2>Study Design</h2>
 <p>Between-Subject Design</p>
 <p><strong>Predictors:</strong> 1. Perceived Stress: 1(not
-stressed)-5(very stressed) + Outcome Variable + Continuous 2. Condition:
-condition 1:non-stigmatized, 2= stigmatized + Predictor Variable +
-Categorical</p>
+stressed)-5(very stressed) + Outcome Variable + Continuous</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Condition: 1:non-stigmatized, 2= stigmatized</li>
+</ol>
+<ul>
+<li>Predictor Variable</li>
+<li>Categorical</li>
+</ul>
 <p><strong>Outcome:</strong><br />
 1. Emotional Valence: 1(negative)-9(positive) + Outcome Variable +
 Continuous</p>
 </div>
 <div id="predicted-results" class="section level2">
 <h2>Predicted Results</h2>
-<p>The interaction between perceived stress, stigma, and emotional
-valence is expected to be significant. Participants facing high stigma
-are predicted to have high perceived stress and lowest emotional valence
-(most negative affect) compared to other group.</p>
+<p>The interaction between perceived stress on stigma and emotional
+valence is expected to be significant. Participants facing high
+perceived stress are predicted to have high stigma and low emotional
+valence (most negative affect) compared to other group.</p>
 </div>
 </div>
 <div id="data-preperation" class="section level1">
 <h1>Data Preperation</h1>
 <div id="load-data" class="section level2">
 <h2>Load Data</h2>
-<pre class="r"><code>data &lt;- read.csv(&quot;data/data processing script /STGREW1b_comb.csv&quot;)</code></pre>
+<pre class="r"><code>data &lt;- read.csv(&quot;STGREW1b_comb.csv&quot;)</code></pre>
 </div>
 <div id="reverse-code-perveived-stress" class="section level2">
 <h2>Reverse Code Perveived Stress</h2>
@@ -1568,7 +1573,7 @@ data$Condition &lt;- as.factor(data$Condition)</code></pre>
 </div>
 <div id="linear-regression-model" class="section level2">
 <h2>Linear Regression Model</h2>
-<p>The interaction between stigma and perceived stress on emotional
+<p>The interaction between perceived stress on stigma and emotional
 valence was not significant. This finding was not aligned with our
 hypothesis. This result could be due to an inadequate sample size or it
 could be that there is no relationship between stigma and stress.</p>

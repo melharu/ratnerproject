@@ -1,5 +1,5 @@
 ---
-title: "The Effects of Stigmatization on Stress and Emotions"
+title: "Examining relationships among stigmatization, stress and emotions"
 author: "mel"
 date: "`r Sys.Date()`"
 output: 
@@ -25,7 +25,7 @@ library(ThemePark)
 # Background
 
 ## Research Question
-Does stigma function as a moderator in the relationship between perceived stress and emotional valence (positive or negative affect) experienced by individuals?
+Does perceived stress function as a moderator in the relationship between stigma and emotional valence (positive or negative affect) experienced by individuals?
 
 ## Study Design
 
@@ -35,7 +35,8 @@ Between-Subject Design
 1. Perceived Stress: 1(not stressed)-5(very stressed)
   + Outcome Variable
   + Continuous
-2. Condition: condition 1:non-stigmatized, 2= stigmatized
+
+2. Condition: 1:non-stigmatized, 2= stigmatized
   + Predictor Variable
   + Categorical
 
@@ -46,13 +47,13 @@ Between-Subject Design
   
   
 ## Predicted Results
-The interaction between perceived stress, stigma, and emotional valence is expected to be significant. Participants facing high stigma are predicted to have high perceived stress and lowest emotional valence (most negative affect) compared to other group. 
+The interaction between perceived stress on stigma and emotional valence is expected to be significant. Participants facing high perceived stress are predicted to have high stigma and low emotional valence (most negative affect) compared to other group. 
 
 # Data Preperation
 
 ## Load Data
 ```{r load}
-data <- read.csv("data/data processing script /STGREW1b_comb.csv")
+data <- read.csv("STGREW1b_comb.csv")
 ```
 
 ## Reverse Code Perveived Stress 
@@ -101,7 +102,7 @@ c(summary(data$PSS),"SD"=sd(data$PSS,na.rm=T))
 ```
 
 ## Linear Regression Model
-The interaction between stigma and perceived stress on emotional valence was not significant. This finding was not aligned with our hypothesis. This result could be due to an inadequate sample size or it could be that there is no relationship between stigma and stress.
+The interaction between perceived stress on stigma and emotional valence was not significant. This finding was not aligned with our hypothesis. This result could be due to an inadequate sample size or it could be that there is no relationship between stigma and stress.
 
 ### Create a Linear Regression Model
 ```{r linear model}
