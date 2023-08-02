@@ -22,9 +22,9 @@ library(showtext)
 library(devtools)
 library(ThemePark)
 ```
-# Background: 
+# Background
 
-## Research Question: 
+## Research Question
 Does stigma function as a moderator in the relationship between perceived stress and emotional valence (positive or negative affect) experienced by individuals?
 
 ## Study Design
@@ -45,7 +45,7 @@ Between-Subject Design
   + Continuous
   
   
-## Predicted Results:
+## Predicted Results
 The interaction between perceived stress, stigma, and emotional valence is expected to be significant. Participants facing high stigma are predicted to have high perceived stress and lowest emotional valence (most negative affect) compared to other group. 
 
 # Data Preperation
@@ -123,7 +123,7 @@ plot <- ggplot(data, aes(x= PSS, y=mat_valence, color=Condition)) +
   geom_smooth(method = "lm", se = T, alpha = .2) +
   labs(x="Perceived Stress", y="Emotional Valence") +
   theme_barbie(barbie_font = TRUE) +
-  scale_color_manual(values=c("lightpink","orchid4")) 
+  scale_color_manual(values=c("lightpink","hotpink3")) 
   
 
 plot
