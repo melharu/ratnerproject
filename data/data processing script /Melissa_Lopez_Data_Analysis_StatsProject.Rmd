@@ -31,7 +31,8 @@ Does perceived stress function as a moderator in the relationship between stigma
 
 Between-Subject Design
 
-**Predictors:**
+**Predictors:** 
+
 1. Perceived Stress: 1(not stressed)-5(very stressed)
   + Outcome Variable
   + Continuous
