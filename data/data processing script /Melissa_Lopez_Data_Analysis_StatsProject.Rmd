@@ -46,6 +46,7 @@ Between-Subject Design
   + Categorical
 
 **Outcome:**  
+
 1. Emotional Valence (Dependent Variable) 
   + Self-Assessment Manikin: 1(negative affect)-9(positive affect)
   + Outcome Variable
