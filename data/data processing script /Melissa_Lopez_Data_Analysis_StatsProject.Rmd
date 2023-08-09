@@ -31,18 +31,23 @@ Does perceived stress function as a moderator in the relationship between stigma
 
 Between-Subject Design
 
+87 self-identified Mexican-American undergraduates 
+
 **Predictors:** 
 
-1. Perceived Stress: 1(not stressed)-5(very stressed)
+1. Perceived Stress (Moderator)
+  + Perceived Stress Scale: 1(not stressed)-5(very stressed)
   + Outcome Variable
   + Continuous
 
-2. Condition: 1:non-stigmatized, 2= stigmatized
+2. Condition (Independent Variable)
+  + 1: non-stigmatized, 2: stigmatized
   + Predictor Variable
   + Categorical
 
 **Outcome:**  
-1. Emotional Valence: 1(negative)-9(positive)
+1. Emotional Valence (Dependent Variable) 
+  + Self-Assessment Manikin: 1(negative affect)-9(positive affect)
   + Outcome Variable
   + Continuous
   
