@@ -1505,16 +1505,16 @@ experienced by individuals?</p>
 </ol>
 <ul>
 <li>Perceived Stress Scale: 1(not stressed)-5(very stressed)</li>
-<li>Outcome Variable</li>
 <li>Continuous</li>
+<li>Outcome Variable</li>
 </ul>
 <ol start="2" style="list-style-type: decimal">
 <li>Condition (Independent Variable)</li>
 </ol>
 <ul>
 <li>1: non-stigmatized, 2: stigmatized</li>
-<li>Predictor Variable</li>
 <li>Categorical</li>
+<li>Predictor Variable</li>
 </ul>
 <p><strong>Outcome:</strong></p>
 <ol style="list-style-type: decimal">
@@ -1522,8 +1522,8 @@ experienced by individuals?</p>
 </ol>
 <ul>
 <li>Self-Assessment Manikin: 1(negative affect)-9(positive affect)</li>
-<li>Outcome Variable</li>
 <li>Continuous</li>
+<li>Outcome Variable</li>
 </ul>
 </div>
 <div id="predicted-results" class="section level2">
@@ -1531,7 +1531,7 @@ experienced by individuals?</p>
 <p>The interaction between perceived stress on stigma and emotional
 valence is expected to be significant. Participants facing high
 perceived stress are predicted to have high stigma and low emotional
-valence (most negative affect) compared to other group.</p>
+valence (most negative affect) compared to the control group.</p>
 </div>
 </div>
 <div id="data-preperation" class="section level1">
@@ -1540,15 +1540,15 @@ valence (most negative affect) compared to other group.</p>
 <h2>Load Data</h2>
 <pre class="r"><code>data &lt;- read.csv(&quot;STGREW1b_comb.csv&quot;)</code></pre>
 </div>
-<div id="reverse-code-perveived-stress" class="section level2">
-<h2>Reverse Code Perveived Stress</h2>
+<div id="reverse-code-perceived-stress" class="section level2">
+<h2>Reverse Code Perceived Stress</h2>
 <pre class="r"><code>#recode 2 varibles Pss: Q2_2, Q2_3
 data &lt;- data %&gt;% 
   mutate_at(vars(Q2_2, Q2_3), function(x){6-x})</code></pre>
 </div>
-<div id="average-and-create-a-column-for-percieved-stress" class="section level2">
-<h2>Average and Create A Column for Percieved Stress</h2>
-<pre class="r"><code># make one col of pss/ average rows four items t create one single pss col
+<div id="average-and-create-a-column-for-perceived-stress" class="section level2">
+<h2>Average and Create A Column for Perceived Stress</h2>
+<pre class="r"><code># make one col of pss/ average rows four items to create one single pss col
 data &lt;- data %&gt;% 
   rowwise() %&gt;% 
   mutate(PSS = mean(c_across(starts_with(&#39;Q2_&#39;)), na.rm = TRUE))</code></pre>
@@ -1592,6 +1592,9 @@ data$Condition &lt;- as.factor(data$Condition)</code></pre>
 valence was not significant. This finding was not aligned with our
 hypothesis. This result could be due to an inadequate sample size or it
 could be that there is no relationship between stigma and stress.</p>
+<p>Whether participants saw the control or stigmatizing video clips, the
+emotional valence they reported was not moderated by perceived stress
+that they had experienced prior to the experiment.</p>
 <div id="create-a-linear-regression-model" class="section level3">
 <h3>Create a Linear Regression Model</h3>
 <pre class="r"><code># lm formula

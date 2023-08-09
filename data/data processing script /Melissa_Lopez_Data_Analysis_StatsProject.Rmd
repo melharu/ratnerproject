@@ -37,24 +37,24 @@ Between-Subject Design
 
 1. Perceived Stress (Moderator)
   + Perceived Stress Scale: 1(not stressed)-5(very stressed)
-  + Outcome Variable
   + Continuous
+  + Outcome Variable
 
 2. Condition (Independent Variable)
   + 1: non-stigmatized, 2: stigmatized
-  + Predictor Variable
   + Categorical
+  + Predictor Variable
 
 **Outcome:**  
 
 1. Emotional Valence (Dependent Variable) 
   + Self-Assessment Manikin: 1(negative affect)-9(positive affect)
-  + Outcome Variable
   + Continuous
+  + Outcome Variable
   
   
 ## Predicted Results
-The interaction between perceived stress on stigma and emotional valence is expected to be significant. Participants facing high perceived stress are predicted to have high stigma and low emotional valence (most negative affect) compared to other group. 
+The interaction between perceived stress on stigma and emotional valence is expected to be significant. Participants facing high perceived stress are predicted to have high stigma and low emotional valence (most negative affect) compared to the control group. 
 
 # Data Preperation
 
@@ -63,15 +63,15 @@ The interaction between perceived stress on stigma and emotional valence is expe
 data <- read.csv("STGREW1b_comb.csv")
 ```
 
-## Reverse Code Perveived Stress 
+## Reverse Code Perceived Stress 
 ```{r recode}
 #recode 2 varibles Pss: Q2_2, Q2_3
 data <- data %>% 
   mutate_at(vars(Q2_2, Q2_3), function(x){6-x})
 ```
-## Average and Create A Column for Percieved Stress
+## Average and Create A Column for Perceived Stress
 ```{r pss col}
-# make one col of pss/ average rows four items t create one single pss col
+# make one col of pss/ average rows four items to create one single pss col
 data <- data %>% 
   rowwise() %>% 
   mutate(PSS = mean(c_across(starts_with('Q2_')), na.rm = TRUE))
@@ -110,6 +110,10 @@ c(summary(data$PSS),"SD"=sd(data$PSS,na.rm=T))
 
 ## Linear Regression Model
 The interaction between perceived stress on stigma and emotional valence was not significant. This finding was not aligned with our hypothesis. This result could be due to an inadequate sample size or it could be that there is no relationship between stigma and stress.
+
+Whether participants saw the control or stigmatizing video clips, the emotional valence they reported was not moderated by perceived stress that they had experienced prior to the experiment.
+
+
 
 ### Create a Linear Regression Model
 ```{r linear model}
